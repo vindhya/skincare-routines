@@ -1,98 +1,19 @@
 <div class="container">
   <!-- ROUTINES LIST -->
   <div class="col-50">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>
-          <h1>Routines</h1>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item
-            (click)="selectRoutine(routine)"
-            *ngFor="let routine of routines$ | async"
-          >
-            <h3 mat-line>
-              {{ routine.title }}
-            </h3>
-            <p mat-line>
-              {{ routine.details }}
-            </p>
-            <button
-              mat-icon-button
-              (click)="
-                deleteRoutine(routine); $event.stopImmediatePropagation()
-              "
-            >
-              <mat-icon>close</mat-icon>
-            </button>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
+    <app-routines-list
+      [routines]="routines$ | async"
+      (selected)="selectRoutine($event)"
+      (deleted)="deleteRoutine($event)"
+    ></app-routines-list>
   </div>
 
   <!-- ROUTINE DETAILS -->
   <div class="col-50">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>
-          <h1>
-            <!-- ROUTINE TITLE HERE -->
-            <span *ngIf="selectedRoutine.id; else elseBlock">{{
-              selectedRoutine.title
-            }}</span>
-            <ng-template #elseBlock>Select a routine</ng-template>
-          </h1>
-        </mat-card-title>
-      </mat-card-header>
-
-      <form (submit)="saveRoutine(selectedRoutine)">
-        <mat-card-content>
-          <!-- ROUTINE FORM HERE -->
-          <mat-form-field class="full-width">
-            <input
-              matInput
-              type="text"
-              placeholder="Title"
-              [(ngModel)]="selectedRoutine.title"
-              name="title"
-            />
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <textarea
-              matInput
-              placeholder="Details"
-              [(ngModel)]="selectedRoutine.details"
-              name="details"
-            ></textarea>
-          </mat-form-field>
-          <section class="full-width">
-            <h4>{{ selectedRoutine.percentComplete }}% Complete</h4>
-            <mat-slider
-              class="full-width"
-              min="0"
-              max="100"
-              thumbLabel
-              [(ngModel)]="selectedRoutine.percentComplete"
-              name="percentComplete"
-            >
-            </mat-slider>
-          </section>
-          <section>
-            <mat-checkbox [(ngModel)]="selectedRoutine.approved" name="approved"
-              >Approved by Customer</mat-checkbox
-            >
-          </section>
-        </mat-card-content>
-        <mat-card-actions>
-          <button type="submit" mat-button color="primary">Save</button>
-          <button type="button" mat-button (click)="cancel()">
-            Cancel
-          </button>
-        </mat-card-actions>
-      </form>
-    </mat-card>
+    <app-routine-details
+      [routine]="selectedRoutine"
+      (saved)="saveRoutine($event)"
+      (cancelled)="cancel()"
+    ></app-routine-details>
   </div>
 </div>

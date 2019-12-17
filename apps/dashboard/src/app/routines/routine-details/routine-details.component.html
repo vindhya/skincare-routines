@@ -1,0 +1,64 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>
+        <!-- ROUTINE TITLE HERE -->
+        <span *ngIf="currentRoutine.id; else elseBlock">
+          {{ originalTitle }}
+        </span>
+        <ng-template #elseBlock>Select a routine</ng-template>
+      </h1>
+    </mat-card-title>
+  </mat-card-header>
+
+  <form (click)="saved.emit(currentRoutine)">
+    <mat-card-content>
+      <!-- ROUTINE FORM HERE -->
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="text"
+          placeholder="Title"
+          [(ngModel)]="currentRoutine.title"
+          name="title"
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <textarea
+          matInput
+          placeholder="Details"
+          [(ngModel)]="currentRoutine.details"
+          name="details"
+        ></textarea>
+      </mat-form-field>
+      <section class="full-width">
+        <h4>{{ currentRoutine.percentComplete }}% Complete</h4>
+        <mat-slider
+          class="full-width"
+          min="0"
+          max="100"
+          thumbLabel
+          [(ngModel)]="currentRoutine.percentComplete"
+          name="percentComplete"
+        >
+        </mat-slider>
+      </section>
+      <section>
+        <mat-checkbox [(ngModel)]="currentRoutine.approved" name="approved"
+          >Approved by Customer</mat-checkbox
+        >
+      </section>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        type="submit"
+        mat-button
+        color="primary">
+        Save
+      </button>
+      <button type="button" mat-button (click)="cancelled.emit(currentRoutine)">
+        Cancel
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

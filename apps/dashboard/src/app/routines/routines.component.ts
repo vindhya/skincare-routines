@@ -21,7 +21,6 @@ export class RoutinesComponent implements OnInit {
 
   selectRoutine(routine) {
     this.selectedRoutine = routine;
-    console.log('SELECTED ROUTINE', routine);
   }
 
   resetRoutine() {
