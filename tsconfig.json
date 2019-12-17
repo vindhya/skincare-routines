@@ -15,7 +15,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@skincare/material": ["libs/material/src/index.ts"],
+      "@skincare/core-data": ["libs/core-data/src/index.ts"],
+      "@skincare/ui-login": ["libs/ui-login/src/index.ts"],
+      "@skincare/ui-toolbar": ["libs/ui-toolbar/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
