@@ -11,18 +11,19 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { RoutinesModule } from './routines/routines.module';
 import { BrandsModule } from './brands/brands.module';
+import { AppRoutingModule } from './app-routing.module';
+import { UiLoginModule } from '@skincare/ui-login';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     // NoopAnimationsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HomeModule,
-    RoutinesModule,
-    BrandsModule
+    UiLoginModule,
+    // RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
