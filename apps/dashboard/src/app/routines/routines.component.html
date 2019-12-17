@@ -32,6 +32,7 @@
       </mat-card-content>
     </mat-card>
   </div>
+
   <!-- ROUTINE DETAILS -->
   <div class="col-50">
     <mat-card>
@@ -39,17 +40,51 @@
         <mat-card-title>
           <h1>
             <!-- ROUTINE TITLE HERE -->
-            <span *ngIf="selectedRoutine; else elseBlock">{{
+            <span *ngIf="selectedRoutine.id; else elseBlock">{{
               selectedRoutine.title
             }}</span>
-            <ng-template #elseBlock>Select a product</ng-template>
+            <ng-template #elseBlock>Select a routine</ng-template>
           </h1>
         </mat-card-title>
       </mat-card-header>
-      <form>
+
+      <form (submit)="saveRoutine(selectedRoutine)">
         <mat-card-content>
           <!-- ROUTINE FORM HERE -->
-          {{ selectedRoutine | json }}
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              type="text"
+              placeholder="Title"
+              [(ngModel)]="selectedRoutine.title"
+              name="title"
+            />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <textarea
+              matInput
+              placeholder="Details"
+              [(ngModel)]="selectedRoutine.details"
+              name="details"
+            ></textarea>
+          </mat-form-field>
+          <section class="full-width">
+            <h4>{{ selectedRoutine.percentComplete }}% Complete</h4>
+            <mat-slider
+              class="full-width"
+              min="0"
+              max="100"
+              thumbLabel
+              [(ngModel)]="selectedRoutine.percentComplete"
+              name="percentComplete"
+            >
+            </mat-slider>
+          </section>
+          <section>
+            <mat-checkbox [(ngModel)]="selectedRoutine.approved" name="approved"
+              >Approved by Customer</mat-checkbox
+            >
+          </section>
         </mat-card-content>
         <mat-card-actions>
           <button type="submit" mat-button color="primary">Save</button>

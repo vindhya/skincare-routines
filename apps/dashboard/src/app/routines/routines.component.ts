@@ -16,11 +16,23 @@ export class RoutinesComponent implements OnInit {
 
   ngOnInit() {
     this.getRoutines();
+    this.resetRoutine();
   }
 
   selectRoutine(routine) {
     this.selectedRoutine = routine;
     console.log('SELECTED ROUTINE', routine);
+  }
+
+  resetRoutine() {
+    const emptyRoutine: Routine = {
+      id: null,
+      title: '',
+      details: '',
+      percentComplete: 0,
+      approved: false
+    };
+    this.selectRoutine(emptyRoutine);
   }
 
   getRoutines() {
@@ -33,6 +45,32 @@ export class RoutinesComponent implements OnInit {
     this.routines$ = this.routinesService.all();
   }
 
+  saveRoutine(routine) {
+    if(!routine.id) {
+      this.createRoutine(routine);
+    } else {
+      this.updateRoutine(routine)
+    }
+  }
+
+  createRoutine(routine) {
+    this.routinesService
+      .create(routine)
+      .subscribe(result => {
+        this.getRoutines();
+        this.resetRoutine();
+      });
+  }
+
+  updateRoutine(routine) {
+    this.routinesService
+      .update(routine)
+      .subscribe(result => {
+        this.getRoutines();
+        this.resetRoutine();
+      });
+  }
+
   deleteRoutine(routine) {
     this.routinesService
       .delete(routine.id)
@@ -40,6 +78,6 @@ export class RoutinesComponent implements OnInit {
   }
 
   cancel() {
-    this.selectRoutine(null);
+    this.resetRoutine();
   }
 }
