@@ -8,12 +8,6 @@
     "nx.json": "*"
   },
   "projects": {
-    "skincare-test-app-e2e": {
-      "tags": []
-    },
-    "skincare-test-app": {
-      "tags": []
-    },
     "dashboard-e2e": {
       "tags": []
     },
