@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { RouterModule } from '@angular/router';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  NoopAnimationsModule,
+  BrowserAnimationsModule
+} from '@angular/platform-browser/animations';
 import { MaterialModule } from '@skincare/material';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
@@ -14,7 +17,8 @@ import { BrandsModule } from './brands/brands.module';
   imports: [
     BrowserModule,
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
-    NoopAnimationsModule,
+    // NoopAnimationsModule,
+    BrowserAnimationsModule,
     MaterialModule,
     HomeModule,
     RoutinesModule,

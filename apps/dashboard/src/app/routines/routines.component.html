@@ -9,12 +9,15 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list>
-          <mat-list-item>
+          <mat-list-item
+            (click)="selectRoutine(routine)"
+            *ngFor="let routine of routines"
+          >
             <h3 mat-line>
-              <!-- ROUTINES DETAILS -->
+              {{ routine.title }}
             </h3>
             <p mat-line>
-              <!-- ROUTINES DETAILS -->
+              {{ routine.details }}
             </p>
             <button mat-icon-button>
               <mat-icon>close</mat-icon>
@@ -24,23 +27,30 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <!-- ROUTINES DETAILS -->
+  <!-- ROUTINE DETAILS -->
   <div class="col-50">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
           <h1>
             <!-- ROUTINE TITLE HERE -->
+            <span *ngIf="selectedRoutine; else elseBlock">{{
+              selectedRoutine.title
+            }}</span>
+            <ng-template #elseBlock>Select a product</ng-template>
           </h1>
         </mat-card-title>
       </mat-card-header>
       <form>
         <mat-card-content>
           <!-- ROUTINE FORM HERE -->
+          {{ selectedRoutine | json }}
         </mat-card-content>
         <mat-card-actions>
           <button type="submit" mat-button color="primary">Save</button>
-          <button type="button" mat-button>Cancel</button>
+          <button type="button" mat-button (click)="cancel()">
+            Cancel
+          </button>
         </mat-card-actions>
       </form>
     </mat-card>
