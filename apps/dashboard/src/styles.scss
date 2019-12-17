@@ -312,10 +312,11 @@ mat-toolbar {
     flex: 1 1 auto;
   }
   .title {
+    margin-left: 15px;
     vertical-align: middle;
   }
   .logo {
-    margin-left: 20px;
+    margin-left: 30px;
     img {
       vertical-align: middle;
       width: 45px;
