@@ -11,7 +11,7 @@
         <mat-list>
           <mat-list-item
             (click)="selectRoutine(routine)"
-            *ngFor="let routine of routines"
+            *ngFor="let routine of routines$ | async"
           >
             <h3 mat-line>
               {{ routine.title }}
@@ -19,7 +19,12 @@
             <p mat-line>
               {{ routine.details }}
             </p>
-            <button mat-icon-button>
+            <button
+              mat-icon-button
+              (click)="
+                deleteRoutine(routine); $event.stopImmediatePropagation()
+              "
+            >
               <mat-icon>close</mat-icon>
             </button>
           </mat-list-item>

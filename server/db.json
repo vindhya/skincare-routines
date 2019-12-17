@@ -1,0 +1,80 @@
+{
+  "brands": [
+    {
+      "id": "1",
+      "name": "Drunk Elephant",
+      "url": "https://www.drunkelephant.com/",
+      "status": 1
+    },
+    {
+      "id": "2",
+      "name": "Tatcha",
+      "url": "https://www.tatcha.com/",
+      "status": 2
+    },
+    {
+      "id": "3",
+      "name": "Ole Henrickson",
+      "url": "https://www.olehenriksen.com/",
+      "status": 1
+    },
+    {
+      "id": "4",
+      "name": "Sol de Janeiro",
+      "url": "https://soldejaneiro.com/",
+      "status": 3
+    },
+    {
+      "id": "5",
+      "name": "COSRX",
+      "url": "https://www.cosrx.com/",
+      "status": 4
+    }
+  ],
+  "routines": [
+    {
+      "id": "1",
+      "title": "Morning Routine",
+      "details": "This is a sample project",
+      "percentComplete": 20,
+      "approved": false,
+      "startDate": null,
+      "targetDate": null,
+      "completionDate": null,
+      "customerId": "1"
+    },
+    {
+      "id": "2",
+      "title": "Nighttime Routine",
+      "details": "This is a sample project",
+      "percentComplete": 40,
+      "approved": false,
+      "startDate": null,
+      "targetDate": null,
+      "completionDate": null,
+      "customerId": "3"
+    },
+    {
+      "id": "3",
+      "title": "Weekend Routine",
+      "details": "This is a sample project",
+      "percentComplete": 40,
+      "approved": false,
+      "startDate": null,
+      "targetDate": null,
+      "completionDate": null,
+      "customerId": "4"
+    },
+    {
+      "id": "5",
+      "title": "Acne/Breakout Routine",
+      "details": "This is a sample project",
+      "percentComplete": 100,
+      "approved": true,
+      "startDate": null,
+      "targetDate": "2018-10-26T07:00:00.000Z",
+      "completionDate": null,
+      "customerId": "1"
+    }
+  ]
+}
