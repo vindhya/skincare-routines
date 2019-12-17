@@ -11,6 +11,7 @@ export class RoutinesComponent implements OnInit {
   // routines$: Observable<Routine[]>;
   routines$;
   selectedRoutine: Routine;
+  primaryColor = 'red';
 
   constructor(private routinesService: RoutinesService) {}
 
